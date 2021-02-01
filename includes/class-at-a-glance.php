@@ -1,4 +1,10 @@
 <?php
+/**
+ * At_A_Glance class.
+ *
+ * @package ssl-db-connection-indicator
+ * @since 0.1.0
+ */
 
 namespace SHC\SSL_DB_CONNECTION_INDICATOR;
 
@@ -36,12 +42,12 @@ class At_A_Glance extends Connection_Status {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array $items
-	 * @return array
+	 * @param string[] $items Array of extra 'At a Glance' widget items.
+	 * @return string[]
 	 *
 	 * @filter dashboard_glance_items
 	 */
-	function dashboard_glance_item( $items = array() ) {
+	public function dashboard_glance_item( $items = array() ) {
 		$class   = 'nossl';
 		$title   = '';
 		$message = __( 'DB conn unencrypted', 'ssl-db-connection-indicator' );
@@ -55,7 +61,7 @@ class At_A_Glance extends Connection_Status {
 
 		printf(
 			'<li class="ssl-db-connection-indicator %1$s"><span title="%2$s">%3$s</span></li>',
-			$class,
+			esc_attr( $class ),
 			esc_attr( $title ),
 			esc_html( $message )
 		);
@@ -105,7 +111,7 @@ class At_A_Glance extends Connection_Status {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $hook_suffix
+	 * @param string $hook_suffix The current admin page.
 	 * @return void
 	 *
 	 * @action admin_enqueue_scripts

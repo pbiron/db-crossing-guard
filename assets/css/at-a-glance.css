@@ -20,14 +20,14 @@
  * except that I've reordered the properties into alpha order.
  */
 #network_dashboard_right_now .ssl-db-connection-indicator span:before  {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	color: #606a73;
-    display: inline-block;
-    font: normal 20px/1 dashicons;
-    padding: 0 5px 0 0;
-    position: relative;
-    speak: never;
-    text-decoration: none !important;
-    vertical-align: top;
+	display: inline-block;
+	font: normal 20px/1 dashicons;
+	padding: 0 5px 0 0;
+	position: relative;
+	speak: never;
+	text-decoration: none !important;
+	vertical-align: top;
 }

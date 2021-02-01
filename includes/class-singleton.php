@@ -1,4 +1,10 @@
 <?php
+/**
+ * Singleton class.
+ *
+ * @package ssl-db-connection-indicator
+ * @since 0.1.0
+ */
 
 namespace SHC\SSL_DB_CONNECTION_INDICATOR;
 

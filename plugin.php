@@ -1,6 +1,6 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 
-/*
+/**
  * Plugin Name: SSL DB Connection Indicator
  * Description: Display various indicators about whether the DB connection is over SSL or not
  * Version: 0.1.0
@@ -58,13 +58,13 @@ class Plugin extends Singleton {
 		parent::add_hooks();
 
 		add_filter(
-			'ssl-db-connection-indicator-site-health-failed-status',
+			'ssl_db_connection_indicator_site_health_failed_status',
 			function( $failed_status ) {
 				return 'critical';
 			}
 		);
 		add_filter(
-			'ssl-db-connection-indicator-site-health-failed-badge-color',
+			'ssl_db_connection_indicator_site_health_failed_badge_color',
 			function( $failed_badge_color ) {
 				return 'red';
 			}

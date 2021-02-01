@@ -1,4 +1,10 @@
 <?php
+/**
+ * Admin_Bar_Node class.
+ *
+ * @package ssl-db-connection-indicator
+ * @since 0.1.0
+ */
 
 namespace SHC\SSL_DB_CONNECTION_INDICATOR;
 
@@ -36,7 +42,7 @@ class Admin_Bar_Node extends Connection_Status {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param WP_Admin_Bar $wp_admin_bar
+	 * @param WP_Admin_Bar $wp_admin_bar {@link https://developer.wordpress.org/reference/classes/wp_admin_bar/ WP_Admin_Bar} instance, passed by reference.
 	 * @return void
 	 *
 	 * @action admin_bar_menu
@@ -47,9 +53,9 @@ class Admin_Bar_Node extends Connection_Status {
 		$status = $this->get_conn_status();
 
 		$args = array(
-			'id'     => 'ssl_db_connection_indicator',
-			'title'  => __( 'DB conn unencrypted', 'ssl-db-connection-indicator' ),
-			'meta'   => array( 'class' => 'nossl' ),
+			'id'    => 'ssl_db_connection_indicator',
+			'title' => __( 'DB conn unencrypted', 'ssl-db-connection-indicator' ),
+			'meta'  => array( 'class' => 'nossl' ),
 		);
 
 		if ( $status['ssl_version'] ) {
