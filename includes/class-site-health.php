@@ -110,14 +110,41 @@ class Site_Health extends Connection_Status {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return array
+	 * @return array {
+	 *     The result of our Test.
+	 *
+	 *     @type string $label What the header of the section should say.
+	 *     @type string $status Section the result should be displayed in. Possible values are good, recommended, or critical.
+	 *     @type string[] $badge {
+	 *         The badge to display on the results page.
+	 *
+	 *         @type string $label What the badge should say.
+	 *         @type string $color Applies a CSS class with this value to the badge. Core styles support blue, green, red, orange, purple and gray.
+	 *     }
+	 *     @type string $description Additional details about the results of the test.
+	 *     @type string $actions     A link or button to allow the end user to take action on the result.
+	 *     @type string $test        The name of the test.
+	 * }
 	 */
 	public function connection_test() {
+		/**
+		 * Filters the status used for test failure.
+		 *
+		 * @param string $failed_status The status to use for test failure.  Default is 'recommeneded'.
+		 *                              Accepts 'recommended' and 'critical'.
+		 */
 		$failed_status = apply_filters( 'ssl_db_connection_indicator_site_health_failed_status', self::DEFAULT_FAILED_STATUS );
-		if ( ! in_array( $failed_status, array( 'good', 'recommedned', 'critical' ), true ) ) {
+		if ( ! in_array( $failed_status, array( 'recommedned', 'critical' ), true ) ) {
 			$failed_status = self::DEFAULT_FAILED_STATUS;
 		}
 
+		/**
+		 * Filters the color used for the badge on test failure.
+		 *
+		 * @param string $failed_badge_color The color to use for the badge on test failure.
+		 *                                   Default is 'blue'.  Accepts 'blue', 'green',
+		 *                                   'red', 'orange', 'purple' and 'gray'.
+		 */
 		$failed_badge_color = apply_filters( 'ssl_db_connection_indicator_site_health_failed_badge_color', self::DEFAULT_FAILED_BADGE_COLOR );
 		if ( ! in_array( $failed_badge_color, array( 'blue', 'green', 'red', 'orange', 'purple', 'gray' ), true ) ) {
 			$failed_badge_color = self::DEFAULT_FAILED_BADGE_COLOR;
