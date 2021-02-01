@@ -1,0 +1,29 @@
+/*
+ * yes, I know, using !important is bad practice!
+ *
+ * but, core's CSS rules for hover (and other conditions) on admin bar nodes
+ * are so screwy, it's just easier to ensure that things look correct this way.
+ */
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator .ab-empty-item,
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator:hover .ab-empty-item,
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator .ab-icon::before {
+	color: #fff !important;
+}
+
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator.ssl > .ab-item,
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator.ssl:hover > .ab-item {
+	background-color: #46b450 !important;
+}
+
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator.ssl .ab-icon::before {
+	content: '\f160'; /* dashicons-lock */
+}
+
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator.nossl .ab-item,
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator.nossl:hover .ab-item {
+	background-color: #ffb900 !important;
+}
+
+#wpadminbar #wp-admin-bar-ssl_db_connection_indicator.nossl .ab-icon::before {
+	content: '\f528'; /* dashicons-unlock */
+}

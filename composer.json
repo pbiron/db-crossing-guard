@@ -1,0 +1,33 @@
+{
+	"name": "shc/ssl-db-connection-indicator",
+    "description": "Display various indicators about whether the DB connection is over SSL or not.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+            "name": "Paul V. Biron",
+            "email": "paul@sparrowhawkcomputing.com",
+            "homepage": "https://sparrowhawkcomputing.com",
+            "role": "Developer"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+	"minimum-stability": "dev",
+	"extra": {
+		"wordpress-install-dir": "tests/wp"
+	},
+	"autoload": {
+		"classmap": ["plugin.php", "includes"]
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+		"johnpbloch/wordpress": "*",
+		"phpcompatibility/phpcompatibility-wp": "^2.1.0",
+		"phpunit/phpunit": "^5.7 || ^6.5 || ^7.5",
+		"wp-coding-standards/wpcs": "^2.3.0",
+		"wp-phpunit/wp-phpunit": "*"
+	},
+	"require": {}
+}
