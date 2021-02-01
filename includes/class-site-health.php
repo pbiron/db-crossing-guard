@@ -154,8 +154,10 @@ class Site_Health extends Connection_Status {
 			'label'       => __( 'Database connection is unencrypted', 'ssl-db-connection-indicator' ),
 			'status'      => $failed_status,
 			'description' => sprintf(
-				'<p>%s</p>',
-				__( 'SSL is not enabled.  SSL database connections improve security and privacy.', 'ssl-db-connection-indicator' )
+				'<p>%1$s %2$s</p><p>%3$s</p>',
+				__( 'The database connection is not encrypted.', 'ssl-db-connection-indicator' ),
+				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'ssl-db-connection-indicator' ),
+				__( 'Explaing how to establish an encrypted database connection beyond what can be described here.', 'ssl-db-connection-indicator' ),
 			),
 			'badge'       => array(
 				'label' => __( 'Security' ),
@@ -176,7 +178,7 @@ class Site_Health extends Connection_Status {
 					__( 'The database connection is %s.', 'ssl-db-connection-indicator' ),
 					$this->get_conn_status_as_str( $status )
 				),
-				__( 'This helps to enhance security and privacy.', 'ssl-db-connection-indicator' )
+				__( 'Encrypted database connections help to enhance security and privacy.', 'ssl-db-connection-indicator' )
 			);
 			$result['badge']['color'] = 'blue';
 		}
