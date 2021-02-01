@@ -12,8 +12,8 @@
   "license": "GPL-2.0-or-later",
   "license_uri": "https://www.gnu.org/licenses/gpl-2.0.html",
   "donate_link": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU",
-  "contribs": "pbiron, afragen",
-  "tags": "updates, api, auto-updates, updates-api",
+  "contribs": "pbiron",
+  "tags": "database, security, privacy",
   "namespace": "SHC\\SSL_DB_CONNECTION_INDICATOR",
   "repository": "https://github.com/pbiron",
   "devDependencies": {
