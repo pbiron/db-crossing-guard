@@ -157,7 +157,7 @@ class Site_Health extends Connection_Status {
 				'<p>%1$s %2$s</p><p>%3$s</p>',
 				__( 'The database connection is not encrypted.', 'ssl-db-connection-indicator' ),
 				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'ssl-db-connection-indicator' ),
-				__( 'Explaing how to establish an encrypted database connection beyond what can be described here.', 'ssl-db-connection-indicator' ),
+				__( 'Explainng how to establish an encrypted database connection beyond what can be described here.', 'ssl-db-connection-indicator' ),
 			),
 			'badge'       => array(
 				'label' => __( 'Security' ),
