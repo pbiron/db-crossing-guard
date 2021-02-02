@@ -3,7 +3,7 @@
   "plugin_name": "DB Crossing Guard",
   "description": "Display various indicators to let admins know whether the DB connection is encrypted",
   "author": "Paul V. Biron/Sparrow Hawk Computing",
-  "plugin_uri": "https://wordpress.org/plugins/updates-api-inspector/",
+  "plugin_uri": "https://github.com/pbiron/db-crossing-guard",
   "version": "0.2.0",
   "requires_at_least": "4.6",
   "requires_php": "5.6.0",

@@ -6,6 +6,7 @@
  * Version: 0.2.0
  * Author: Paul V. Biron/Sparrow Hawk Computing
  * Author URI: http://sparrowhawkcomputing.com/
+ * Plugin URI: https://github.com/pbiron/db-crossing-guard/
  * Network: true
  *
  * Inspired by the At a Glance item added by the secure-db-connection plugin.
