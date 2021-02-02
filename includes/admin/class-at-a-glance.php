@@ -65,7 +65,7 @@ class At_A_Glance extends Connection_Status {
 		//       for mobile (i.e., currently on touch devices, there's no way to find out
 		//       what the encryption is (
 		printf(
-			'<li class="db-crossing-guard %1$s"><span title="%2$s">%3$s</span></li>',
+			'<li class="db_crossing_guard %1$s"><span title="%2$s">%3$s</span></li>',
 			esc_attr( $class ),
 			esc_attr( $title ),
 			esc_html( $message )

@@ -133,7 +133,7 @@ class Site_Health extends Connection_Status {
 		 * @param string $failed_status The status to use for test failure.  Default is 'recommeneded'.
 		 *                              Accepts 'recommended' and 'critical'.
 		 */
-		$failed_status = apply_filters( 'ssl_db_connection_indicator_site_health_failed_status', self::DEFAULT_FAILED_STATUS );
+		$failed_status = apply_filters( 'db_crossing_guard_site_health_failed_status', self::DEFAULT_FAILED_STATUS );
 		if ( ! in_array( $failed_status, array( 'recommedned', 'critical' ), true ) ) {
 			$failed_status = self::DEFAULT_FAILED_STATUS;
 		}
@@ -145,7 +145,7 @@ class Site_Health extends Connection_Status {
 		 *                                   Default is 'blue'.  Accepts 'blue', 'green',
 		 *                                   'red', 'orange', 'purple' and 'gray'.
 		 */
-		$failed_badge_color = apply_filters( 'ssl_db_connection_indicator_site_health_failed_badge_color', self::DEFAULT_FAILED_BADGE_COLOR );
+		$failed_badge_color = apply_filters( 'db_crossing_guard_site_health_failed_badge_color', self::DEFAULT_FAILED_BADGE_COLOR );
 		if ( ! in_array( $failed_badge_color, array( 'blue', 'green', 'red', 'orange', 'purple', 'gray' ), true ) ) {
 			$failed_badge_color = self::DEFAULT_FAILED_BADGE_COLOR;
 		}

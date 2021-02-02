@@ -55,7 +55,7 @@ class Admin_Bar_Node extends Connection_Status {
 		$status = $this->get_conn_status();
 
 		$args = array(
-			'id'    => 'ssl_db_connection_indicator',
+			'id'    => 'db_crossing_guard',
 			'title' => __( 'DB connection unencrypted', 'db-crossing-guard' ),
 			'meta'  => array( 'class' => 'nossl' ),
 		);
@@ -72,8 +72,8 @@ class Admin_Bar_Node extends Connection_Status {
 		if ( $status['ssl_version'] ) {
 			// add a child node that displays the encryption.
 			$args = array(
-				'id'     => 'ssl_db_connection_indicator_ssl',
-				'parent' => 'ssl_db_connection_indicator',
+				'id'     => 'db_crossing_guard_ssl',
+				'parent' => 'db_crossing_guard',
 				'title'  => $this->get_conn_status_as_str( $status ),
 			);
 

@@ -1,16 +1,16 @@
-#dashboard_right_now .ssl-db-connection-indicator span,
-#network_dashboard_right_now .ssl-db-connection-indicator span {
+#dashboard_right_now .db_crossing_guard span,
+#network_dashboard_right_now .db_crossing_guard span {
 	cursor: default;
 }
 
-#dashboard_right_now .ssl-db-connection-indicator.ssl span:before,
-#network_dashboard_right_now .ssl-db-connection-indicator.ssl span:before {
+#dashboard_right_now .db_crossing_guard.ssl span:before,
+#network_dashboard_right_now .db_crossing_guard.ssl span:before {
 	content: '\f160'; /* dashicons-lock */
 	color: #46b450;
 }
 
-#dashboard_right_now .ssl-db-connection-indicator.nossl span:before,
-#network_dashboard_right_now .ssl-db-connection-indicator.nossl span:before {
+#dashboard_right_now .db_crossing_guard.nossl span:before,
+#network_dashboard_right_now .db_crossing_guard.nossl span:before {
 	content: '\f528'; /* dashicons-unlock */
 	color: #ffb900;
 }
@@ -19,7 +19,7 @@
  * this rule is the same as that for single-site #dashboard_right_now,
  * except that I've reordered the properties into alpha order.
  */
-#network_dashboard_right_now .ssl-db-connection-indicator span:before  {
+#network_dashboard_right_now .db_crossing_guard span:before  {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #606a73;
