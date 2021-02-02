@@ -46,6 +46,8 @@ class Admin_Bar_Node extends Connection_Status {
 	 * @return void
 	 *
 	 * @action admin_bar_menu
+	 *
+	 * @todo figure out how to get the node to display on small screens.
 	 */
 	public function add_node( $wp_admin_bar ) {
 		wp_enqueue_style( 'ssl-db-connection-indicator-admin-bar-node' );
@@ -54,12 +56,12 @@ class Admin_Bar_Node extends Connection_Status {
 
 		$args = array(
 			'id'    => 'ssl_db_connection_indicator',
-			'title' => __( 'DB conn unencrypted', 'ssl-db-connection-indicator' ),
+			'title' => __( 'DB connection unencrypted', 'ssl-db-connection-indicator' ),
 			'meta'  => array( 'class' => 'nossl' ),
 		);
 
 		if ( $status['ssl_version'] ) {
-			$args['title']         = __( 'DB conn encrypted', 'ssl-db-connection-indicator' );
+			$args['title']         = __( 'DB connection encrypted', 'ssl-db-connection-indicator' );
 			$args['meta']['class'] = 'ssl';
 		}
 
