@@ -46,34 +46,6 @@ class Plugin extends Singleton {
 	const FILE = __FILE__;
 
 	/**
-	 * Add hooks.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return void
-	 *
-	 * @todo this is just temporary, to test our hooks in the Site_Health class.
-	 */
-	protected function add_hooks() {
-		parent::add_hooks();
-
-		add_filter(
-			'ssl_db_connection_indicator_site_health_failed_status',
-			function( $failed_status ) {
-				return 'critical';
-			}
-		);
-		add_filter(
-			'ssl_db_connection_indicator_site_health_failed_badge_color',
-			function( $failed_badge_color ) {
-				return 'red';
-			}
-		);
-
-		return;
-	}
-
-	/**
 	 * Perform initialization after all plugins have loaded.
 	 *
 	 * @since 0.1.0
