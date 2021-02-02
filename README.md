@@ -1,22 +1,22 @@
-=== SSL DB Connection Indicator ===
+# SSL DB Connection Indicator #
 
-Contributors: pbiron
-Tags: database, security, privacy
-Requires at least: 4.6
-Requires PHP: 5.6.0
-Tested up to: 5.6.0
-Stable tag: 0.1.1
-License: GPL-2.0-or-later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU
+**Contributors:** [pbiron](https://profiles.wordpress.org/pbiron)  
+**Tags:** database, security, privacy  
+**Requires at least:** 4.6  
+**Requires PHP:** 5.6.0  
+**Tested up to:** 5.6.0  
+**Stable tag:** 0.1.1  
+**License:** GPL-2.0-or-later  
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
+**Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU  
 
 Display various indicators about whether the DB connection is over SSL or not
 
-== Description ==
+## Description ##
 
 To be written.
 
-== Installation ==
+## Installation ##
 
 From your WordPress dashboard
 
@@ -25,17 +25,17 @@ From your WordPress dashboard
 3. Activate the plugin
 
 
-== Screenshots ==
+## Screenshots ##
 
 To be written.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
 To be written.
 
-== Changelog ==
+## Changelog ##
 
-= 0.1.1 (2021-02-02) =
+### 0.1.1 (2021-02-02) ###
 
 * Enhancements
     * Various documentation and WPCS improvements
@@ -47,6 +47,6 @@ To be written.
     * Site Health
         * The test and debug descriptions have been slightly improved
 
-= 0.1.0 (2021-01-30) =
+### 0.1.0 (2021-01-30) ###
 
 * init commit.

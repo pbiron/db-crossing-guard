@@ -3,7 +3,7 @@
 /**
  * Plugin Name: SSL DB Connection Indicator
  * Description: Display various indicators about whether the DB connection is over SSL or not
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Paul V. Biron/Sparrow Hawk Computing
  * Author URI: http://sparrowhawkcomputing.com/
  * Network: true
@@ -36,7 +36,7 @@ class Plugin extends Singleton {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.1.0';
+	const VERSION = '0.1.1';
 
 	/**
 	 * The full path to the main plugin file.
