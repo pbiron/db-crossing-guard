@@ -3,7 +3,7 @@
 /**
  * Plugin Name: DB Crossing Guard
  * Description: Display various indicators to let admins know whether the DB connection is encrypted
- * Version: 0.2.0
+ * Version: 0.2.1
  * Author: Paul V. Biron/Sparrow Hawk Computing
  * Author URI: http://sparrowhawkcomputing.com/
  * Plugin URI: https://github.com/pbiron/db-crossing-guard/
@@ -38,7 +38,7 @@ class Plugin extends Singleton {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.2.0';
+	const VERSION = '0.2.1';
 
 	/**
 	 * The full path to the main plugin file.
