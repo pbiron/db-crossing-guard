@@ -11,7 +11,7 @@ namespace SHC\SSL_DB_CONNECTION_INDICATOR;
 defined( 'ABSPATH' ) || die;
 
 /**
- * Abstract parent class of all other classes that need know what
+ * Parent class of all other classes that need know what
  * the current connection status is.
  *
  * @since 0.1.0
