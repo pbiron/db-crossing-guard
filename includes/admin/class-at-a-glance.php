@@ -48,13 +48,13 @@ class At_A_Glance extends Connection_Status {
 	 * @filter dashboard_glance_items
 	 */
 	public function dashboard_glance_item( $items = array() ) {
-		$class   = 'nossl';
+		$class   = 'unencrypted';
 		$title   = '';
 		$message = __( 'DB connection unencrypted', 'db-crossing-guard' );
 
 		$status = $this->get_conn_status();
 		if ( $status['ssl_cipher'] ) {
-			$class   = 'ssl';
+			$class   = 'encrypted';
 			$title   = $this->get_conn_status_as_str( $status );
 			$message = __( 'DB connection encrypted', 'db-crossing-guard' );
 		}
@@ -65,7 +65,7 @@ class At_A_Glance extends Connection_Status {
 		//       for mobile (i.e., currently on touch devices, there's no way to find out
 		//       what the encryption is (
 		printf(
-			'<li class="db_crossing_guard %1$s"><span title="%2$s">%3$s</span></li>',
+			'<li class="db-crossing-guard %1$s"><span title="%2$s">%3$s</span></li>',
 			esc_attr( $class ),
 			esc_attr( $title ),
 			esc_html( $message )
