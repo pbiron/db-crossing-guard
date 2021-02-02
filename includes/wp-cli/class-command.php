@@ -2,11 +2,11 @@
 /**
  * Command class.
  *
- * @package ssl-db-connection-indicator
+ * @package db-crossing-guard
  * @since 0.1.1
  */
 
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 use WP_CLI;
 use WP_CLI_Command;
@@ -28,7 +28,7 @@ class Command extends WP_CLI_Command {
 		$conn_status = Connection_Status::get_instance();
 
 		$status = $conn_status->get_conn_status_as_str( $conn_status->get_conn_status() );
-		if ( __( 'Unencrypted', 'ssl-db-connection-indicator' ) === $status ) {
+		if ( __( 'Unencrypted', 'db-crossing-guard' ) === $status ) {
 			WP_CLI::warning( $status );
 		} else {
 			WP_CLI::success( $status );

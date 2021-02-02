@@ -1,8 +1,8 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 
 /**
- * Plugin Name: SSL DB Connection Indicator
- * Description: Display various indicators about whether the DB connection is over SSL or not
+ * Plugin Name: DB Crossing Guard
+ * Description: Display various indicators to let admins know whether the DB connection is encrypted
  * Version: 0.1.1
  * Author: Paul V. Biron/Sparrow Hawk Computing
  * Author URI: http://sparrowhawkcomputing.com/
@@ -15,7 +15,7 @@
  * @todo suggest that @johnbillion add a filter so that we can add a "Connection" row to
  *       QM's Environment Database panel.  Or maybe he can add it himself.
  */
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 use WP_CLI;
 
@@ -27,6 +27,7 @@ require __DIR__ . '/vendor/autoload.php';
  * Main plugin class.
  *
  * @since 0.1.0
+ * @since 0.2.0 Plugin renamed to DB Crossing Guard, slug to db-crossing-guard and Namespace to SHC\DB_CROSSING_GUARD
  */
 class Plugin extends Singleton {
 	/**
@@ -92,7 +93,7 @@ class Plugin extends Singleton {
 	 * @action cli_init
 	 */
 	public function cli_init() {
-		WP_CLI::add_command( 'ssl-db-connection-indicator', __NAMESPACE__ . '\\Command' );
+		WP_CLI::add_command( 'db-crossing-guard', __NAMESPACE__ . '\\Command' );
 
 		return;
 	}

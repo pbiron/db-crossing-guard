@@ -2,11 +2,11 @@
 /**
  * Admin_Bar_Node class.
  *
- * @package ssl-db-connection-indicator
+ * @package db-crossing-guard
  * @since 0.1.0
  */
 
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 use WP_Admin_Bar;
 
@@ -50,18 +50,18 @@ class Admin_Bar_Node extends Connection_Status {
 	 * @todo figure out how to get the node to display on small screens.
 	 */
 	public function add_node( $wp_admin_bar ) {
-		wp_enqueue_style( 'ssl-db-connection-indicator-admin-bar-node' );
+		wp_enqueue_style( 'db-crossing-guard-admin-bar-node' );
 
 		$status = $this->get_conn_status();
 
 		$args = array(
 			'id'    => 'ssl_db_connection_indicator',
-			'title' => __( 'DB connection unencrypted', 'ssl-db-connection-indicator' ),
+			'title' => __( 'DB connection unencrypted', 'db-crossing-guard' ),
 			'meta'  => array( 'class' => 'nossl' ),
 		);
 
 		if ( $status['ssl_version'] ) {
-			$args['title']         = __( 'DB connection encrypted', 'ssl-db-connection-indicator' );
+			$args['title']         = __( 'DB connection encrypted', 'db-crossing-guard' );
 			$args['meta']['class'] = 'ssl';
 		}
 
@@ -96,7 +96,7 @@ class Admin_Bar_Node extends Connection_Status {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		wp_register_style(
-			'ssl-db-connection-indicator-admin-bar-node',
+			'db-crossing-guard-admin-bar-node',
 			plugins_url( "assets/css/admin-bar-node{$suffix}.css", Plugin::FILE ),
 			array(),
 			Plugin::VERSION

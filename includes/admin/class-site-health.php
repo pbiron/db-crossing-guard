@@ -2,11 +2,11 @@
 /**
  * Site_Heath class.
  *
- * @package ssl-db-connection-indicator
+ * @package db-crossing-guard
  * @since 0.1.0
  */
 
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 defined( 'ABSPATH' ) || die;
 
@@ -97,8 +97,8 @@ class Site_Health extends Connection_Status {
 	 * @filter site_status_tests
 	 */
 	public function add_tests( $tests ) {
-		$tests['direct']['ssl-db-connection-indicator-connection-test'] = array(
-			'label' => __( 'Database Connection', 'ssl-db-connection-indicator' ),
+		$tests['direct']['db-crossing-guard-connection-test'] = array(
+			'label' => __( 'Database Connection', 'db-crossing-guard' ),
 			'test'  => array( $this, 'connection_test' ),
 		);
 
@@ -151,34 +151,34 @@ class Site_Health extends Connection_Status {
 		}
 
 		$result = array(
-			'label'       => __( 'Database connection is unencrypted', 'ssl-db-connection-indicator' ),
+			'label'       => __( 'Database connection is unencrypted', 'db-crossing-guard' ),
 			'status'      => $failed_status,
 			'description' => sprintf(
 				'<p>%1$s %2$s</p><p>%3$s</p>',
-				__( 'The database connection is not encrypted.', 'ssl-db-connection-indicator' ),
-				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'ssl-db-connection-indicator' ),
-				__( 'Explainng how to establish an encrypted database connection beyond what can be described here.', 'ssl-db-connection-indicator' ),
+				__( 'The database connection is not encrypted.', 'db-crossing-guard' ),
+				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'db-crossing-guard' ),
+				__( 'Explainng how to establish an encrypted database connection beyond what can be described here.', 'db-crossing-guard' ),
 			),
 			'badge'       => array(
 				'label' => __( 'Security' ),
 				'color' => $failed_badge_color,
 			),
-			'test'        => 'ssl-db-connection-indicator',
+			'test'        => 'db-crossing-guard',
 			'actions'     => '',
 		);
 
 		$status = $this->get_conn_status();
 		if ( $status['ssl_version'] ) {
-			$result['label']       = __( 'Database connection is encrypted', 'ssl-db-connection-indicator' );
+			$result['label']       = __( 'Database connection is encrypted', 'db-crossing-guard' );
 			$result['status']      = 'good';
 			$result['description'] = sprintf(
 				'<p>%1$s</p><p>%2$s</p>',
 				sprintf(
 					/* translators: the SSL/TLS version number and encryption cipher used for the database connection */
-					__( 'The database connection is %s.', 'ssl-db-connection-indicator' ),
+					__( 'The database connection is %s.', 'db-crossing-guard' ),
 					$this->get_conn_status_as_str( $status )
 				),
-				__( 'Encrypted database connections help to enhance security and privacy.', 'ssl-db-connection-indicator' )
+				__( 'Encrypted database connections help to enhance security and privacy.', 'db-crossing-guard' )
 			);
 			$result['badge']['color'] = 'blue';
 		}
@@ -250,8 +250,8 @@ class Site_Health extends Connection_Status {
 	 */
 	public function debug_information( $debug_info ) {
 		$debug_info['wp-database']['fields']['connection'] = array(
-			'label' => __( 'Connection', 'ssl-db-connection-indicator' ),
-			'value' => __( 'Unencrypted', 'ssl-db-connection-indicator' ),
+			'label' => __( 'Connection', 'db-crossing-guard' ),
+			'value' => __( 'Unencrypted', 'db-crossing-guard' ),
 		);
 
 		$status = $this->get_conn_status();

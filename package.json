@@ -1,7 +1,7 @@
 {
-  "name": "ssl-db-connection-indicator",
-  "plugin_name": "SSL DB Connection Indicator",
-  "description": "Display various indicators about whether the DB connection is over SSL or not",
+  "name": "db-crossing-guard",
+  "plugin_name": "DB Crossing Guard",
+  "description": "Display various indicators to let admins know whether the DB connection is encrypted",
   "author": "Paul V. Biron/Sparrow Hawk Computing",
   "plugin_uri": "https://wordpress.org/plugins/updates-api-inspector/",
   "version": "0.1.1",
@@ -14,7 +14,7 @@
   "donate_link": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU",
   "contribs": "pbiron",
   "tags": "database, security, privacy",
-  "namespace": "SHC\\SSL_DB_CONNECTION_INDICATOR",
+  "namespace": "SHC\\DB_CROSSING_GUARD",
   "repository": "https://github.com/pbiron",
   "devDependencies": {
     "coffeescript": "^2.5.1",

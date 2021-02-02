@@ -2,11 +2,11 @@
 /**
  * At_A_Glance class.
  *
- * @package ssl-db-connection-indicator
+ * @package db-crossing-guard
  * @since 0.1.0
  */
 
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 defined( 'ABSPATH' ) || die;
 
@@ -50,13 +50,13 @@ class At_A_Glance extends Connection_Status {
 	public function dashboard_glance_item( $items = array() ) {
 		$class   = 'nossl';
 		$title   = '';
-		$message = __( 'DB connection unencrypted', 'ssl-db-connection-indicator' );
+		$message = __( 'DB connection unencrypted', 'db-crossing-guard' );
 
 		$status = $this->get_conn_status();
 		if ( $status['ssl_cipher'] ) {
 			$class   = 'ssl';
 			$title   = $this->get_conn_status_as_str( $status );
-			$message = __( 'DB connection encrypted', 'ssl-db-connection-indicator' );
+			$message = __( 'DB connection encrypted', 'db-crossing-guard' );
 		}
 
 		// @todo find markup/CSS that will allow us to use a longer $message that
@@ -65,7 +65,7 @@ class At_A_Glance extends Connection_Status {
 		//       for mobile (i.e., currently on touch devices, there's no way to find out
 		//       what the encryption is (
 		printf(
-			'<li class="ssl-db-connection-indicator %1$s"><span title="%2$s">%3$s</span></li>',
+			'<li class="db-crossing-guard %1$s"><span title="%2$s">%3$s</span></li>',
 			esc_attr( $class ),
 			esc_attr( $title ),
 			esc_html( $message )
@@ -104,7 +104,7 @@ class At_A_Glance extends Connection_Status {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		wp_register_style(
-			'ssl-db-connection-indicator-at-a-glnace',
+			'db-crossing-guard-at-a-glnace',
 			plugins_url( "assets/css/at-a-glance{$suffix}.css", Plugin::FILE ),
 			array(),
 			Plugin::VERSION
@@ -123,7 +123,7 @@ class At_A_Glance extends Connection_Status {
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 		if ( 'index.php' === $hook_suffix ) {
-			wp_enqueue_style( 'ssl-db-connection-indicator-at-a-glnace' );
+			wp_enqueue_style( 'db-crossing-guard-at-a-glnace' );
 		}
 
 		return;

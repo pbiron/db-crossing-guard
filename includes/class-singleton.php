@@ -2,11 +2,11 @@
 /**
  * Singleton class.
  *
- * @package ssl-db-connection-indicator
+ * @package db-crossing-guard
  * @since 0.1.0
  */
 
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 defined( 'ABSPATH' ) || die;
 

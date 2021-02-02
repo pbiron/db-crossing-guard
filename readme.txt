@@ -1,4 +1,4 @@
-=== SSL DB Connection Indicator ===
+=== DB Crossing Guard ===
 
 Contributors: pbiron
 Tags: database, security, privacy
@@ -10,7 +10,7 @@ License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU
 
-Display various indicators about whether the DB connection is over SSL or not
+Display various indicators to let admins know whether the DB connection is encrypted
 
 == Description ==
 

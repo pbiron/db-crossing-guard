@@ -2,11 +2,11 @@
 /**
  * Connection_Status class.
  *
- * @package ssl-db-connection-indicator
+ * @package db-crossing-guard
  * @since 0.1.0
  */
 
-namespace SHC\SSL_DB_CONNECTION_INDICATOR;
+namespace SHC\DB_CROSSING_GUARD;
 
 defined( 'ABSPATH' ) || die;
 
@@ -64,12 +64,12 @@ class Connection_Status extends Singleton {
 	 * @todo write a proper hash for the $status param
 	 */
 	public function get_conn_status_as_str( $status ) {
-		$str = __( 'Unencrypted', 'ssl-db-connection-indicator' );
+		$str = __( 'Unencrypted', 'db-crossing-guard' );
 
 		if ( $status['ssl_version'] ) {
 			$str = sprintf(
 				/* translators: $1 SSL/TLS version number, $2 encryption cipher used */
-				__( 'SSL (%1$s) encrypted via %2$s', 'ssl-db-connection-indicator' ),
+				__( 'SSL (%1$s) encrypted via %2$s', 'db-crossing-guard' ),
 				$status['ssl_version'],
 				$status['ssl_cipher']
 			);
