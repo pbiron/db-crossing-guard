@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || die;
  *
  * @since 0.1.0
  */
-abstract class Connection_Status extends Singleton {
+class Connection_Status extends Singleton {
 	/**
 	 * Get the connection status.
 	 *
@@ -31,7 +31,7 @@ abstract class Connection_Status extends Singleton {
 	 *
 	 * @todo write a proper hash for the return type
 	 */
-	protected function get_conn_status() {
+	public function get_conn_status() {
 		global $wpdb;
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -63,7 +63,7 @@ abstract class Connection_Status extends Singleton {
 	 *
 	 * @todo write a proper hash for the $status param
 	 */
-	protected function get_conn_status_as_str( $status ) {
+	public function get_conn_status_as_str( $status ) {
 		$str = __( 'Unencrypted', 'ssl-db-connection-indicator' );
 
 		if ( $status['ssl_version'] ) {

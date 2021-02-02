@@ -17,6 +17,8 @@
  */
 namespace SHC\SSL_DB_CONNECTION_INDICATOR;
 
+use WP_CLI;
+
 defined( 'ABSPATH' ) || die;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -76,6 +78,21 @@ class Plugin extends Singleton {
 		//       so that Admin_Bar_Node only gets instantiated when is_admin_bar_showing()
 		//       returns true.
 		Admin_Bar_Node::get_instance();
+
+		return;
+	}
+
+	/**
+	 * Initialize WP_CLI.
+	 *
+	 * @since 0.1.1
+	 *
+	 * @return void
+	 *
+	 * @action cli_init
+	 */
+	public function cli_init() {
+		WP_CLI::add_command( 'ssl-db-connection-indicator', __NAMESPACE__ . '\\Command' );
 
 		return;
 	}
