@@ -50,15 +50,20 @@ class At_A_Glance extends Connection_Status {
 	public function dashboard_glance_item( $items = array() ) {
 		$class   = 'nossl';
 		$title   = '';
-		$message = __( 'DB conn unencrypted', 'ssl-db-connection-indicator' );
+		$message = __( 'DB connection unencrypted', 'ssl-db-connection-indicator' );
 
 		$status = $this->get_conn_status();
 		if ( $status['ssl_cipher'] ) {
 			$class   = 'ssl';
 			$title   = $this->get_conn_status_as_str( $status );
-			$message = __( 'DB conn encrypted', 'ssl-db-connection-indicator' );
+			$message = __( 'DB connection encrypted', 'ssl-db-connection-indicator' );
 		}
 
+		// @todo find markup/CSS that will allow us to use a longer $message that
+		//       includes the encrypt and have it correctly wrap at the icon;
+		//       so that the encryption doesn't need to be @title, which is problematic
+		//       for mobile (i.e., currently on touch devices, there's no way to find out
+		//       what the encryption is (
 		printf(
 			'<li class="ssl-db-connection-indicator %1$s"><span title="%2$s">%3$s</span></li>',
 			esc_attr( $class ),
