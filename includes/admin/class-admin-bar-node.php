@@ -2,8 +2,9 @@
 /**
  * Admin_Bar_Node class.
  *
- * @package db-crossing-guard
  * @since 0.1.0
+ *
+ * @package db-crossing-guard
  */
 
 namespace SHC\DB_CROSSING_GUARD;

@@ -2,8 +2,9 @@
 /**
  * Command class.
  *
- * @package db-crossing-guard
  * @since 0.1.1
+ *
+ * @package db-crossing-guard
  */
 
 namespace SHC\DB_CROSSING_GUARD;
