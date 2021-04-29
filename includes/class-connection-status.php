@@ -12,7 +12,7 @@ namespace SHC\DB_CROSSING_GUARD;
 defined( 'ABSPATH' ) || die;
 
 /**
- * Parent class of all other classes that need know what
+ * Parent class of all other classes that need to know what
  * the current connection status is.
  *
  * @since 0.1.0
@@ -23,14 +23,12 @@ class Connection_Status extends Singleton {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return array {
-	 *     XXX
+	 * @return string[] {
+	 *     Connection status array.
 	 *
 	 *     @type string $ssl_version The SSL/TLS version used.
 	 *     @type string $ssl_cipher  The encryption cipher used.
 	 * }
-	 *
-	 * @todo write a proper hash for the return type
 	 */
 	public function get_conn_status() {
 		global $wpdb;
