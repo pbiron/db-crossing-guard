@@ -369,7 +369,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'precommit', [ /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'jshint:release' ] );
 	// build and package everything up into a ZIP suitable for installing on a WP site.
 	grunt.registerTask(
-		'release',
+		'package',
 		[
 			'build', 'precommit',
 			'readme', 'replace:plugin_php',
