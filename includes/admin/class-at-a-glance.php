@@ -38,12 +38,12 @@ class At_A_Glance extends Connection_Status {
 	}
 
 	/**
-	 * Output our At a Glance item.
+	 * Generate our 'At a Glance' item.
 	 *
 	 * @since 0.1.0
 	 *
 	 * @param string[] $items Array of extra 'At a Glance' widget items.
-	 * @return string[]
+	 * @return string[] Array of extra 'At a Glance' widget items.
 	 *
 	 * @filter dashboard_glance_items
 	 */
@@ -60,12 +60,12 @@ class At_A_Glance extends Connection_Status {
 		}
 
 		// @todo find markup/CSS that will allow us to use a longer $message that
-		//       includes the encrypt and have it correctly wrap at the icon;
+		//       includes the encryption used and have it correctly wrap at the icon;
 		//       so that the encryption doesn't need to be @title, which is problematic
 		//       for mobile (i.e., currently on touch devices, there's no way to find out
-		//       what the encryption is (
-		printf(
-			'<li class="db-crossing-guard %1$s"><span title="%2$s">%3$s</span></li>',
+		//       what the encryption is).
+		$items[] = sprintf(
+			'<span class="db-crossing-guard %1$s" title="%2$s">%3$s</span>',
 			esc_attr( $class ),
 			esc_attr( $title ),
 			esc_html( $message )
@@ -84,9 +84,11 @@ class At_A_Glance extends Connection_Status {
 	 * @action mu_rightnow_end
 	 */
 	public function network_dashboard_glance_item() {
-		echo '<ul>';
-		$this->dashboard_glance_item();
-		echo '</ul>';
+		$status = $this->dashboard_glance_item();
+
+		echo '<ul><li>';
+		echo $status[0]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '</li></ul>';
 
 		return;
 	}

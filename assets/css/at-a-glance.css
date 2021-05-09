@@ -1,16 +1,16 @@
-#dashboard_right_now .db-crossing-guard span,
-#network_dashboard_right_now .db-crossing-guard span {
+#dashboard_right_now .db-crossing-guard,
+#network_dashboard_right_now .db-crossing-guard {
 	cursor: default;
 }
 
-#dashboard_right_now .db-crossing-guard.encrypted span:before,
-#network_dashboard_right_now .db-crossing-guard.encrypted span:before {
+#dashboard_right_now .db-crossing-guard.encrypted:before,
+#network_dashboard_right_now .db-crossing-guard.encrypted:before {
 	content: '\f160'; /* dashicons-lock */
 	color: #46b450;
 }
 
-#dashboard_right_now .db-crossing-guard.unencrypted span:before,
-#network_dashboard_right_now .db-crossing-guard.unencrypted span:before {
+#dashboard_right_now .db-crossing-guard.unencrypted:before,
+#network_dashboard_right_now .db-crossing-guard.unencrypted:before {
 	content: '\f528'; /* dashicons-unlock */
 	color: #ffb900;
 }
@@ -19,7 +19,7 @@
  * this rule is the same as that for single-site #dashboard_right_now,
  * except that I've reordered the properties into alpha order.
  */
-#network_dashboard_right_now .db-crossing-guard span:before  {
+#network_dashboard_right_now .db-crossing-guard:before  {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #606a73;
