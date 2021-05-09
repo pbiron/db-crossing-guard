@@ -15,20 +15,20 @@ use WP_CLI_Command;
 defined( 'ABSPATH' ) || die;
 
 /**
- * Class for our WP_CLI Command(s).
+ * Get information about the connection to the database.
  *
  * @since 0.1.1
  */
 class Command extends WP_CLI_Command {
 	/**
-	 * Display the connection status.
+	 * Display the connection status (encrypted vs unencrypted).
 	 *
 	 * ## EXAMPLES
 	 *
-	 *     $ wp db-crossing-guard status
-	 *     Success: Success: SSL (TLSv1.2) encrypted via ECDHE-RSA-AES128-GCM-SHA256
+	 *     $ wp db connection status
+	 *     Success: SSL (TLSv1.2) encrypted via ECDHE-RSA-AES128-GCM-SHA256
 	 *
-	 *     $ wp db-crossing-guard status
+	 *     $ wp db connection status
 	 *     Warning: Unencrypted
 	 *
 	 * @since 0.1.1
@@ -51,7 +51,7 @@ class Command extends WP_CLI_Command {
 	 *
 	 * ## EXAMPLES
 	 *
-	 *     $ wp db-crossing-guard is-encrypted
+	 *     $ wp db connection is-encrypted
 	 *     $ echo $?
 	 *     1
 	 *

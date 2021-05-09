@@ -88,13 +88,14 @@ class Plugin extends Singleton {
 	 * Initialize WP_CLI.
 	 *
 	 * @since 0.1.1
+	 * @since 0.2.3 Our CLI commands are now sub-commands of the built-in db command.
 	 *
 	 * @return void
 	 *
 	 * @action cli_init
 	 */
 	public function cli_init() {
-		WP_CLI::add_command( 'db-crossing-guard', __NAMESPACE__ . '\\Command' );
+		WP_CLI::add_command( 'db connection', __NAMESPACE__ . '\\Command' );
 
 		return;
 	}
