@@ -157,7 +157,7 @@ class Site_Health extends Connection_Status {
 				'<p>%1$s %2$s</p><p>%3$s</p>',
 				__( 'The database connection is not encrypted.', 'db-crossing-guard' ),
 				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'db-crossing-guard' ),
-				__( 'Explainng how to establish an encrypted database connection beyond what can be described here.', 'db-crossing-guard' ),
+				__( 'Explaing how to establish an encrypted database connection is beyond what can be described here.', 'db-crossing-guard' )
 			),
 			'badge'       => array(
 				'label' => __( 'Security' ),
@@ -178,7 +178,7 @@ class Site_Health extends Connection_Status {
 					__( 'The database connection is %s.', 'db-crossing-guard' ),
 					$this->get_conn_status_as_str( $status )
 				),
-				__( 'Encrypted database connections help to enhance security and privacy.', 'db-crossing-guard' )
+				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'db-crossing-guard' )
 			);
 			$result['badge']['color'] = 'blue';
 		}
