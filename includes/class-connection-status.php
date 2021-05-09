@@ -59,7 +59,7 @@ class Connection_Status extends Singleton {
 	 *     @type string $ssl_version The SSL/TLS version used.
 	 *     @type string $ssl_cipher  The encryption cipher used.
 	 * }
-	 * @return string
+	 * @return string The connection status.  If encrypted, will include the SSLT/TLS version and cipher.
 	 *
 	 * @todo write a proper hash for the $status param
 	 */
