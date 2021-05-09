@@ -6,13 +6,13 @@
 #dashboard_right_now .db-crossing-guard.encrypted::before,
 #network_dashboard_right_now .db-crossing-guard.encrypted::before {
 	content: '\f160'; /* dashicons-lock */
-	color: #46b450;
+	color: #00a32a !important; /* same as core's border-left-color for .notice-success */
 }
 
 #dashboard_right_now .db-crossing-guard.unencrypted::before,
 #network_dashboard_right_now .db-crossing-guard.unencrypted::before {
 	content: '\f528'; /* dashicons-unlock */
-	color: #ffb900;
+	color: #dba617 !important; /* same as core's border-left-color for .notice-warning */
 }
 
 /*

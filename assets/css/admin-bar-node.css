@@ -12,7 +12,7 @@
 
 #wpadminbar #wp-admin-bar-db-crossing-guard.encrypted > .ab-item,
 #wpadminbar #wp-admin-bar-db-crossing-guard.encrypted:hover > .ab-item {
-	background-color: #46b450 !important;
+	background-color: #00a32a !important /* same as core's border-left-color for .notice-success */
 }
 
 #wpadminbar #wp-admin-bar-db-crossing-guard.encrypted .ab-icon::before {
@@ -21,7 +21,7 @@
 
 #wpadminbar #wp-admin-bar-db-crossing-guard.unencrypted .ab-item,
 #wpadminbar #wp-admin-bar-db-crossing-guard.unencrypted:hover .ab-item {
-	background-color: #ffb900 !important;
+	background-color: #dba617 !important; /* same as core's border-left-color for .notice-warning */
 }
 
 #wpadminbar #wp-admin-bar-db-crossing-guard.unencrypted .ab-icon::before {
