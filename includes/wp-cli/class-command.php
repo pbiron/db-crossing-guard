@@ -36,4 +36,25 @@ class Command extends WP_CLI_Command {
 
 		return;
 	}
+
+	/**
+	 * Detects whether the connection is encrypted.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     $ wp db-crossing-guard is-encrypted
+	 *     $ echo $?
+	 *     1
+	 *
+	 * @subcommand is-encrypted
+	 *
+	 * @since 0.2.3
+	 */
+	public function is_encrypted() {
+		$conn_status = Connection_Status::get_instance();
+
+		$status = $conn_status->get_conn_status();
+
+		WP_CLI::halt( $status['ssl_version'] ? 0 : 1 );
+	}
 }
