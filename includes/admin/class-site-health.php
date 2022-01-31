@@ -1,9 +1,10 @@
 <?php
 /**
- * Site_Heath class.
+ * Site_Heath class
+ *
+ * @since 0.1.0
  *
  * @package db-crossing-guard
- * @since 0.1.0
  */
 
 namespace SHC\DB_CROSSING_GUARD;
@@ -55,7 +56,7 @@ class Site_Health extends Connection_Status {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array $tests {
+	 * @param array $test_type {
 	 *     An associative array, where the `$test_type` is either `direct` or
 	 *     `async`, to declare if the test should run via Ajax calls after page load.
 	 *
@@ -74,6 +75,7 @@ class Site_Health extends Connection_Status {
 	 *                                           may require authentication.
 	 *     }
 	 * }
+	 *
 	 * @return array {
 	 *     An associative array, where the `$test_type` is either `direct` or
 	 *     `async`, to declare if the test should run via Ajax calls after page load.
@@ -96,13 +98,13 @@ class Site_Health extends Connection_Status {
 	 *
 	 * @filter site_status_tests
 	 */
-	public function add_tests( $tests ) {
-		$tests['direct']['db-crossing-guard-connection-test'] = array(
+	public function add_tests( $test_type ) {
+		$test_type['direct']['db-crossing-guard-connection-test'] = array(
 			'label' => __( 'Database Connection', 'db-crossing-guard' ),
 			'test'  => array( $this, 'connection_test' ),
 		);
 
-		return $tests;
+		return $test_type;
 	}
 
 	/**
@@ -130,6 +132,8 @@ class Site_Health extends Connection_Status {
 		/**
 		 * Filters the status used for test failure.
 		 *
+		 * @since 0.1.0
+		 *
 		 * @param string $failed_status The status to use for test failure.  Default is 'recommeneded'.
 		 *                              Accepts 'recommended' and 'critical'.
 		 */
@@ -140,6 +144,8 @@ class Site_Health extends Connection_Status {
 
 		/**
 		 * Filters the color used for the badge on test failure.
+		 *
+		 * @since 0.1.0
 		 *
 		 * @param string $failed_badge_color The color to use for the badge on test failure.
 		 *                                   Default is 'blue'.  Accepts 'blue', 'green',
@@ -218,6 +224,7 @@ class Site_Health extends Connection_Status {
 	 *                                 allowing you to show, for example, API keys here.
 	 *     }
 	 * }
+	 *
 	 * @return array {
 	 *     The debug information to be added to the core information page.
 	 *

@@ -1,9 +1,10 @@
 <?php
 /**
- * Connection_Status class.
+ * Connection_Status class
+ *
+ * @since 0.1.0
  *
  * @package db-crossing-guard
- * @since 0.1.0
  */
 
 namespace SHC\DB_CROSSING_GUARD;
@@ -11,8 +12,7 @@ namespace SHC\DB_CROSSING_GUARD;
 defined( 'ABSPATH' ) || die;
 
 /**
- * Parent class of all other classes that need know what
- * the current connection status is.
+ * Parent class of all other classes that need know what the current connection status is.
  *
  * @since 0.1.0
  */
@@ -21,6 +21,8 @@ class Connection_Status extends Singleton {
 	 * Get the connection status.
 	 *
 	 * @since 0.1.0
+	 *
+	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
 	 * @return array {
 	 *     XXX
@@ -34,15 +36,13 @@ class Connection_Status extends Singleton {
 	public function get_conn_status() {
 		global $wpdb;
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$results = $wpdb->get_results(
+		$results = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			"SHOW SESSION STATUS WHERE variable_name IN ( 'Ssl_cipher', 'Ssl_version' )"
 		);
 
 		$return = array();
 		foreach ( $results as $row ) {
-			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			$return[ strtolower( $row->Variable_name ) ] = $row->Value;
+			$return[ strtolower( $row->Variable_name ) ] = $row->Value; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		}
 
 		return $return;
@@ -59,9 +59,8 @@ class Connection_Status extends Singleton {
 	 *     @type string $ssl_version The SSL/TLS version used.
 	 *     @type string $ssl_cipher  The encryption cipher used.
 	 * }
-	 * @return string The connection status.  If encrypted, will include the SSLT/TLS version and cipher.
 	 *
-	 * @todo write a proper hash for the $status param
+	 * @return string The connection status.  If encrypted, will include the SSLT/TLS version and cipher.
 	 */
 	public function get_conn_status_as_str( $status ) {
 		$str = __( 'Unencrypted', 'db-crossing-guard' );

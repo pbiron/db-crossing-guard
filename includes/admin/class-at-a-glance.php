@@ -1,9 +1,10 @@
 <?php
 /**
- * At_A_Glance class.
+ * At_A_Glance class
+ *
+ * @since 0.1.0
  *
  * @package db-crossing-guard
- * @since 0.1.0
  */
 
 namespace SHC\DB_CROSSING_GUARD;
@@ -43,6 +44,7 @@ class At_A_Glance extends Connection_Status {
 	 * @since 0.1.0
 	 *
 	 * @param string[] $items Array of extra 'At a Glance' widget items.
+	 *
 	 * @return string[] Array of extra 'At a Glance' widget items.
 	 *
 	 * @filter dashboard_glance_items

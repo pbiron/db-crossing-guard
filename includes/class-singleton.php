@@ -1,9 +1,10 @@
 <?php
 /**
- * Singleton class.
+ * Singleton class
+ *
+ * @since 0.1.0
  *
  * @package db-crossing-guard
- * @since 0.1.0
  */
 
 namespace SHC\DB_CROSSING_GUARD;
