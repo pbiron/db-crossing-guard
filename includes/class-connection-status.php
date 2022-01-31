@@ -68,7 +68,7 @@ class Connection_Status extends Singleton {
 		if ( $status['ssl_version'] ) {
 			$str = sprintf(
 				/* translators: $1 SSL/TLS version number, $2 encryption cipher used */
-				__( 'SSL (%1$s) encrypted via %2$s', 'db-crossing-guard' ),
+				__( '%1$s using the %2$s cipher', 'db-crossing-guard' ),
 				$status['ssl_version'],
 				$status['ssl_cipher']
 			);
