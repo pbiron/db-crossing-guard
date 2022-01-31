@@ -50,6 +50,47 @@ class Plugin extends Singleton {
 	const FILE = __FILE__;
 
 	/**
+	 * The capability a user must have to see DB connection info.
+	 *
+	 * @since 0.2.3
+	 *
+	 * @var string
+	 */
+	const CAP = 'view_site_health_checks';
+
+	/**
+	 * Add hooks.
+	 *
+	 * @since 0.2.3
+	 *
+	 * @return void
+	 */
+	protected function add_hooks() {
+		parent::add_hooks();
+
+		add_action( 'after_setup_theme', array( $this, 'maybe_instantiate_admin_bar_node' ) );
+
+		return;
+	}
+
+	/**
+	 * Instantiate our admin bar class if appropriate.
+	 *
+	 * @since 0.2.3
+	 *
+	 * @return void
+	 *
+	 * @action after_setup_theme
+	 */
+	public function maybe_instantiate_admin_bar_node() {
+		if ( is_admin_bar_showing() && current_user_can( self::CAP ) ) {
+			Admin_Bar_Node::get_instance();
+		}
+
+		return;
+	}
+
+	/**
 	 * Perform initialization after all plugins have loaded.
 	 *
 	 * @since 0.1.0
@@ -61,7 +102,10 @@ class Plugin extends Singleton {
 	public function plugins_loaded() {
 		global $pagenow;
 
-		if ( ! ( current_user_can( 'administrator' ) || ( is_multisite() && is_super_admin() ) ) ) {
+		if ( wp_doing_cron() ) {
+			// Make sure our tests can run when the site health cron job runs.
+			Site_Health::get_instance();
+		} elseif ( ! ( is_admin() && current_user_can( self::CAP ) ) ) {
 			return;
 		}
 
@@ -75,11 +119,6 @@ class Plugin extends Singleton {
 
 				break;
 		}
-
-		// @todo find an appropriate action that isn't too early nor too late,
-		//       so that Admin_Bar_Node only gets instantiated when is_admin_bar_showing()
-		//       returns true.
-		Admin_Bar_Node::get_instance();
 
 		return;
 	}
