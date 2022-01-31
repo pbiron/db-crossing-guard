@@ -108,7 +108,7 @@ class At_A_Glance extends Connection_Status {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		wp_register_style(
-			'db-crossing-guard-at-a-glnace',
+			'db-crossing-guard-at-a-glance',
 			plugins_url( "assets/css/at-a-glance{$suffix}.css", Plugin::FILE ),
 			array(),
 			Plugin::VERSION
@@ -121,13 +121,14 @@ class At_A_Glance extends Connection_Status {
 	 * @since 0.1.0
 	 *
 	 * @param string $hook_suffix The current admin page.
+	 *
 	 * @return void
 	 *
 	 * @action admin_enqueue_scripts
 	 */
 	public function admin_enqueue_styles( $hook_suffix ) {
 		if ( 'index.php' === $hook_suffix ) {
-			wp_enqueue_style( 'db-crossing-guard-at-a-glnace' );
+			wp_enqueue_style( 'db-crossing-guard-at-a-glance' );
 		}
 
 		return;
