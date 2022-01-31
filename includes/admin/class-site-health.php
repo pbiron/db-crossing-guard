@@ -160,10 +160,9 @@ class Site_Health extends Connection_Status {
 			'label'       => __( 'Database connection is unencrypted', 'db-crossing-guard' ),
 			'status'      => $failed_status,
 			'description' => sprintf(
-				'<p>%1$s</p><p>%2$s</p><p>%3$s</p>',
-				__( 'The database connection is not encrypted.', 'db-crossing-guard' ),
+				'<p>%1$s</p><p>%2$s</p>',
 				__( 'An encrypted database connection helps protect the security and privacy of the information stored in your WordPress database.', 'db-crossing-guard' ),
-				__( 'Explaing how to establish an encrypted database connection is beyond what can be described here.', 'db-crossing-guard' )
+				__( 'The details of how to establish an encrypted database connection are beyond the scope of what can be described here.', 'db-crossing-guard' )
 			),
 			'badge'       => array(
 				'label' => __( 'Security' ),
