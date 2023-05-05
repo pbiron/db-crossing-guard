@@ -54,7 +54,7 @@ class Connection_Status extends Singleton {
 	 * @since 0.1.0
 	 *
 	 * @param array $status {
-	 *     The connection status array.
+	 *     The connection status array.  Default null.  If not provided, $this->get_conn_status() will be called.
 	 *
 	 *     @type string $ssl_version The SSL/TLS version used.
 	 *     @type string $ssl_cipher  The encryption cipher used.
@@ -62,7 +62,11 @@ class Connection_Status extends Singleton {
 	 *
 	 * @return string The connection status.  If encrypted, will include the SSLT/TLS version and cipher.
 	 */
-	public function get_conn_status_as_str( $status ) {
+	public function get_conn_status_as_str( $status = null ) {
+		if ( ! $status ) {
+			$status = $this->get_conn_status();
+		}
+
 		$str = __( 'Unencrypted', 'db-crossing-guard' );
 
 		if ( $status['ssl_version'] ) {
