@@ -17,19 +17,19 @@
   "namespace": "SHC\\DB_CROSSING_GUARD",
   "repository": "https://github.com/pbiron",
   "devDependencies": {
-    "coffeescript": "^2.5.1",
-    "grunt": "^1.3.0",
-    "grunt-composer": "^0.4.5",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^3.0.0",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-rtlcss": "^2.0.2",
-    "grunt-shell": "^3.0.1",
-    "grunt-text-replace": "^0.4.0",
-    "grunt-wp-readme-to-markdown": "^2.0.1",
-    "grunt-zip": "^0.18.2"
+    "coffeescript": "^2.7",
+    "grunt": "^1.6",
+    "grunt-composer": "^0.4",
+    "grunt-contrib-clean": "^2.0",
+    "grunt-contrib-copy": "^1.0",
+    "grunt-contrib-cssmin": "^4.0",
+    "grunt-contrib-jshint": "^3.2",
+    "grunt-contrib-sass": "^2.0",
+    "grunt-contrib-uglify": "^5.2",
+    "grunt-rtlcss": "^2.0",
+    "grunt-shell": "^4.0",
+    "grunt-text-replace": "^0.4",
+    "grunt-wp-readme-to-markdown": "^2.1",
+    "grunt-zip": "^0.20"
   }
 }
