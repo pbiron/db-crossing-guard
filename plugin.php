@@ -102,10 +102,7 @@ class Plugin extends Singleton {
 	public function plugins_loaded() {
 		global $pagenow;
 
-		if ( wp_doing_cron() ) {
-			// Make sure our tests can run when the site health cron job runs.
-			Site_Health::get_instance();
-		} elseif ( ! ( is_admin() && current_user_can( self::CAP ) ) ) {
+		if ( ! ( is_admin() && current_user_can( self::CAP ) ) ) {
 			return;
 		}
 
@@ -115,10 +112,19 @@ class Plugin extends Singleton {
 
 				break;
 			case 'site-health.php':
+			case 'wp-cron.php':
+				// Make sure our tests can run when the site health cron job runs.
 				Site_Health::get_instance();
 
 				break;
 		}
+
+		/**
+		 * Fires when db-crossing-guard has been loaded.
+		 *
+		 * @since 0.2.3
+		 */
+		do_action( 'db_crossing_guard_loaded' );
 
 		return;
 	}
