@@ -1,5 +1,5 @@
 {
-	"name": "shc/ssl-db-connection-indicator",
+	"name": "shc/db-crossing-guard",
     "description": "Display various indicators about whether the DB connection is over SSL or not.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
@@ -11,22 +11,28 @@
             "role": "Developer"
         }
     ],
-    "config": {
-        "sort-packages": true
-    },
-	"minimum-stability": "dev",
+    "config" : {
+		"sort-packages" : true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"minimum-stability" : "dev",
 	"extra": {
 		"wordpress-install-dir": "tests/wp"
 	},
 	"autoload": {
-		"classmap": ["plugin.php", "includes"]
+		"classmap": [
+			"plugin.php",
+			"includes"
+		]
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-		"johnpbloch/wordpress": "*",
-		"phpcompatibility/phpcompatibility-wp": "^2.1.0",
-		"phpunit/phpunit": "^5.7 || ^6.5 || ^7.5",
+		"dealerdirect/phpcodesniffer-composer-installer": "dev-main",
+		"phpcompatibility/phpcompatibility-wp": "*",
 		"wp-coding-standards/wpcs": "^2.3.0",
+		"johnpbloch/wordpress": "*",
+		"phpunit/phpunit": "^5.7 || ^6.5 || ^7.5",
 		"wp-phpunit/wp-phpunit": "*"
 	},
 	"require": {}
