@@ -1,6 +1,6 @@
 <?php
 /**
- * Command class.
+ * Connection_Command class.
  *
  * @since 0.1.1
  *
@@ -18,15 +18,16 @@ defined( 'ABSPATH' ) || die;
  * Get information about the connection to the database.
  *
  * @since 0.1.1
+ * @since 0.2.3 Class name changed to Connection_Command.
  */
-class Command extends WP_CLI_Command {
+class Connection_Command extends WP_CLI_Command {
 	/**
 	 * Display the connection status (encrypted vs unencrypted).
 	 *
 	 * ## EXAMPLES
 	 *
 	 *     $ wp db connection status
-	 *     Success: SSL (TLSv1.2) encrypted via ECDHE-RSA-AES128-GCM-SHA256
+	 *     Success: TLSv1.2 using the ECDHE-RSA-AES128-GCM-SHA256 cipher
 	 *
 	 *     $ wp db connection status
 	 *     Warning: Unencrypted
@@ -51,7 +52,9 @@ class Command extends WP_CLI_Command {
 	 *
 	 * ## EXAMPLES
 	 *
+	 *     # 0 indicates the connection is encrypted, 1 indicates the connection is not encrypted.
 	 *     $ wp db connection is-encrypted
+	 *     # or echo %errorlevel% on Windows.
 	 *     $ echo $?
 	 *     1
 	 *
