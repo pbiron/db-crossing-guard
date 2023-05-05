@@ -140,8 +140,9 @@ module.exports = function( grunt ) {
 			},
 		},
 
-		// various string replacements.
+		// do string search/replace on various files, based on values in package.json.
 		replace: {
+			// replace strings in readme.txt
 			readme: {
 				src: 'readme.txt',
 				overwrite: true,
@@ -197,51 +198,138 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
-			plugin_php: {
+			// replace strings in plugin.php
+			plugin: {
 				src: 'plugin.php',
 				overwrite: true,
 				replacements: [
 					{
-						from: /^( \* Plugin Name:) (.*)/m,
-						to: '$1 <%= pkg.plugin_name %>',
+						from: /^(\s*\*\s*Plugin Name:\s*)(.*)/m,
+						to: '$1<%= pkg.plugin_name %>',
 					},
 					{
-						from: /^( \* Version:) (.*)/mg,
-						to: '$1 <%= pkg.version %>',
+						from: /^(\s*\*\s*Description:\s*)(.*)/m,
+						to: '$1<%= pkg.description %>',
 					},
 					{
-						from: /^( \* Description:) (.*)/m,
-						to: '$1 <%= pkg.description %>',
-					},
-					{
-						from: /^( \* Plugin URI:) (.*)/m,
-						to: '$1 <%= pkg.plugin_uri %>/',
-					},
-					{
-						from: /^( \* GitHub Plugin URI:) (.*)/m,
-						to: '$1 https://github.com/<%= pkg.github_user %>/<%= pkg.name %>/',
-					},
-					{
-						from: /^( \* License URI:) (.*)/m,
-						to: '$1 <%= pkg.license_uri %>',
+						from: /^(\s*\* Version:\s*)(.*)/mg,
+						to: '$1<%= pkg.version %>',
 					},
 					{
 						from: /^(.*const VERSION =) '(.*)'/m,
 						to: "$1 '<%= pkg.version %>'",
 					},
+					{
+						from: /^(\s*\*\s*Text Domain:\s*)(.*)/m,
+						to: '$1<%= pkg.name %>',
+					},
+					{
+						from: /^(\s*\*\s*Requires at least:\s*)(.*)/m,
+						to: '$1<%= pkg.requires_at_least %>',
+					},
+					{
+						from: /^(\s*\*\s*Requires PHP:\s*)(.*)/m,
+						to: '$1<%= pkg.requires_php %>',
+					},
+					{
+						from: /^(\s*\*\s*Plugin URI:\s*)(.*)/m,
+						to: '$1<%= pkg.repository %>/<%= pkg.name %>',
+					},
+					// this is for the github_plugin_uri comment
+					{
+						from: /^(\s*\*\s*GitHub Plugin URI:\s&)(.*)/m,
+						to: '$1<%= pkg.repository %>/<%= pkg.name %>',
+					},
+					{
+						from: /^(\s*\*\s*License:\s*)(.*)/m,
+						to: '$1<%= pkg.license %>',
+					},
+					{
+						from: /^(\s*\*\s*License URI:\s*)(.*)/m,
+						to: '$1<%= pkg.license_uri %>',
+					},
+					{
+						from: /^(\s*\*\s*Donate [lL]ink:\s*)(.*)/m,
+						to: '$1<%= pkg.donate_link %>',
+					},
 				],
 			},
+			// set the PHP namesapce
 			namespace: {
 				src: [
-					'plugin.php', 'uninstall.php',
-					'includes/**/*.php', 'admin/**/*.php'
+					'plugin.php', 'uninstall.php', 'includes/**/*.php',
+					'vendor/shc/**/*.php',
 				],
 				overwrite: true,
-				replacements: [{
-					from: /^namespace (.*);$/m,
-					to: 'namespace <%= pkg.namespace %>;',
-				}],
+				replacements: [
+					{
+						from: /^namespace (.*);$/m,
+						to: 'namespace <%= pkg.namespace %>;',
+					}
+				],
 			},
+			// set the @pacakge tag in the file-level DocBlocks of PHP files.
+			package: {
+				src: [
+					'plugin.php', 'uninstall.php', 'includes/**/*.php',
+					'vendor/shc/**/*.php',
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /^(\s*\*\s*@package\s+)(.*)/m,
+						to: '$1<%= pkg.name %>',
+					}
+				],
+			},
+			// set the version in any block.json files.
+            version_block_json:{
+				src: ['includes/blocks/**/block.json'],
+				overwrite: true,
+				replacements: [
+					{
+						from: /^(\s*"version":\s*")(.*)",/mg,
+						to: '$1<%= pkg.version %>",',
+					}
+				]
+			},
+			// set the version in any *asset.php files (for blocks).
+            version_block_asset:{
+				src: ['includes/blocks/**/*.asset.php'],
+				overwrite: true,
+				replacements: [
+					{
+						from: /^(\s*'version'\s*=>\s*)'(.*)',/mg,
+						to: "$1'<%= pkg.version %>',",
+					}
+				]
+			},
+			plugin_name_phpunit: {
+				src: ['phpunit.xml.dist'],
+				overwrite: true,
+				replacements: [
+					{
+						from: /^(\s*<const name='PLUGIN_TEST_NAME' value=')([^']+)(' \/>)/m,
+						to: '$1<%= pkg.name %>$3',
+					},
+				],
+			},
+            composer: {
+                src: ['composer.json'],
+                overwrite: true,
+                replacements: [
+                	// this is for "name" : "plugin-name"
+                    {
+                        from: /^(\s*"name"\s*:\s*")(.*)"/m,
+                        to: '$1shc/<%= pkg.name %>"',
+                    },
+                	// this is for "description" : "description"
+                    {
+                        from: /^(\s*"description"\s*:\s*")(.*)"/m,
+                        to: '$1<%= pkg.description %>"',
+                    },
+                ],
+            },
 		},
 
 		// Create README.md for GitHub.
