@@ -89,7 +89,7 @@ class At_A_Glance extends Connection_Status {
 		$status = $this->dashboard_glance_item();
 
 		echo '<ul><li>';
-		echo $status[0]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo wp_kses_post( $status[0] );
 		echo '</li></ul>';
 
 		return;
