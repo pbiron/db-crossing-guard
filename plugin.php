@@ -140,7 +140,7 @@ class Plugin extends Singleton {
 	 * @action cli_init
 	 */
 	public function cli_init() {
-		WP_CLI::add_command( 'db connection', __NAMESPACE__ . '\\Command' );
+		WP_CLI::add_command( 'db-crossing-guard connection', __NAMESPACE__ . '\\Connection_Command' );
 
 		return;
 	}
