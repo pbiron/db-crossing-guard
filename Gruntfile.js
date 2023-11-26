@@ -432,6 +432,9 @@ module.exports = function( grunt ) {
 			phpunit_ms: {
 				command: 'phpunit -c tests/phpunit/multisite.xml' + ( grunt.option( 'group' ) ? ' --group ' + grunt.option( 'group' ) : '' ),
 			},
+			phpstan: {
+				command: 'phpstan analyse'
+			},
 		},
 	};
 
@@ -454,7 +457,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', [ 'build' ] );
 	grunt.registerTask( 'build', [ 'clean', 'autoload', 'uglify', /*'sass', 'rtlcss',*/ 'cssmin' ] );
 
-	grunt.registerTask( 'precommit', [ /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'jshint:release' ] );
+	grunt.registerTask( 'precommit', [ 'phpstan', /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'jshint:release' ] );
 	// build and package everything up into a ZIP suitable for installing on a WP site.
 	grunt.registerTask(
 		'release',
@@ -473,6 +476,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpcbf', [ 'shell:phpcbf' ] );
 	grunt.registerTask( 'phpunit', [ 'shell:phpunit' ] );
 	grunt.registerTask( 'phpunit_ms', [ 'shell:phpunit_ms' ] );
+	grunt.registerTask( 'phpstan', [ 'shell:phpstan' ] );
 
 	// this task is normally only run early in the project, when I haven't
 	// yet decided on what namespace I want to use :-)
