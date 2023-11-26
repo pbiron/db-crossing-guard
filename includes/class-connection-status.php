@@ -25,13 +25,16 @@ class Connection_Status extends Singleton {
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
 	 * @return array {
-	 *     XXX
+	 *     The connection status array.
 	 *
 	 *     @type string $ssl_version The SSL/TLS version used.
 	 *     @type string $ssl_cipher  The encryption cipher used.
 	 * }
 	 *
-	 * @todo write a proper hash for the return type
+	 * @phpstan-return array{
+	 *     ssl_version: string,
+	 *     ssl_cipher: string
+	 * }
 	 */
 	public function get_conn_status() {
 		global $wpdb;
@@ -45,7 +48,7 @@ class Connection_Status extends Singleton {
 			$return[ strtolower( $row->Variable_name ) ] = $row->Value; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		}
 
-		return $return;
+		return $return; // @phpstan-ignore-line
 	}
 
 	/**
@@ -61,6 +64,11 @@ class Connection_Status extends Singleton {
 	 * }
 	 *
 	 * @return string The connection status.  If encrypted, will include the SSLT/TLS version and cipher.
+	 *
+	 * @phpstan-param array{
+	 *     ssl_version: string,
+	 *     ssl_cipher: string
+	 * } $status
 	 */
 	public function get_conn_status_as_str( $status = null ) {
 		if ( ! $status ) {

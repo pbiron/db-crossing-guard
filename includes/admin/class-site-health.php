@@ -96,6 +96,26 @@ class Site_Health extends Connection_Status {
 	 *     }
 	 * }
 	 *
+	 * @phpstan-param array{
+	 *     identifier: array{
+	 *         lael: string,
+	 *         test: mixed,
+	 *         has_rest?: bool,
+	 *         skip_cron: bool,
+	 *         async_direct_test: callable,
+	 *     }
+	 * } $test_type
+	 *
+	 * @phpstan-return array{
+	 *     identifier: array{
+	 *         lael: string,
+	 *         test: mixed,
+	 *         has_rest?: bool,
+	 *         skip_cron: bool,
+	 *         async_direct_test: callable,
+	 *     }
+	 * }
+	 *
 	 * @filter site_status_tests
 	 */
 	public function add_tests( $test_type ) {
@@ -126,6 +146,18 @@ class Site_Health extends Connection_Status {
 	 *     @type string $description Additional details about the results of the test.
 	 *     @type string $actions     A link or button to allow the end user to take action on the result.
 	 *     @type string $test        The name of the test.
+	 * }
+	 *
+	 * @phpstan-return array{
+	 *     label: string,
+	 *     status: string,
+	 *     badge: array{
+	 *         label: string,
+	 *         color: string
+	 *     },
+	 *     description: string,
+	 *     actions: string,
+	 *     test: string,
 	 * }
 	 */
 	public function connection_test() {
@@ -249,6 +281,30 @@ class Site_Health extends Connection_Status {
 	 *                                 Note that the array keys are used as labels for the copied data.
 	 *         @type boolean $private  Optional. If set to `true` the field will not be included in the copied data
 	 *                                 allowing you to show, for example, API keys here.
+	 *     }
+	 * }
+	 *
+	 * @phpstan-param array{
+	 *     label: string,
+	 *     description?: string,
+	 *     show_count?: bool,
+	 *     private?: bool,
+	 *     fields: array{
+	 *         label: string,
+	 *         value: string,
+	 *         private: bool,
+	 *     }
+	 * } $debug_info
+	 *
+	 * @phpstan-return array{
+	 *     label: string,
+	 *     description?: string,
+	 *     show_count?: bool,
+	 *     private?: bool,
+	 *     fields: array{
+	 *         label: string,
+	 *         value: string,
+	 *         private: bool,
 	 *     }
 	 * }
 	 *

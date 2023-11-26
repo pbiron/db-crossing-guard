@@ -33,6 +33,8 @@ class Connection_Command extends WP_CLI_Command {
 	 *     Warning: Unencrypted
 	 *
 	 * @since 0.1.1
+	 *
+	 * @return void
 	 */
 	public function status() {
 		$conn_status = Connection_Status::get_instance();
@@ -61,6 +63,8 @@ class Connection_Command extends WP_CLI_Command {
 	 * @subcommand is-encrypted
 	 *
 	 * @since 0.2.3
+	 *
+	 * @return never
 	 */
 	public function is_encrypted() {
 		$conn_status = Connection_Status::get_instance();

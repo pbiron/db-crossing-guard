@@ -15,14 +15,16 @@ defined( 'ABSPATH' ) || die;
  * Abstract base class for singletons.
  *
  * @since 0.1.0
+ *
+ * @phpstan-consistent-constructor
  */
-abstract class Singleton {
+abstract class Singleton extends Base {
 	/**
 	 * Our static instances.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @var array Singleton subclasses
+	 * @var array<string,static>
 	 */
 	public static $instances = array();
 
@@ -31,66 +33,34 @@ abstract class Singleton {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return Singleton sub-class instance.
+	 * @param mixed ...$args Optional arguments.  Declaring this here with the spread operator
+	 *                       allows sub-classes to declare specific arguments.
+	 *
+	 * @return static
 	 */
-	public static function get_instance() {
-		// get "Late Static Binding" class name.
-		$class = get_called_class();
-
-		if ( ! isset( self::$instances[ $class ] ) ) {
-			self::$instances[ $class ] = new $class();
+	public static function get_instance( ...$args ) {
+		if ( ! isset( self::$instances[ static::class ] ) ) {
+			self::$instances[ static::class ] = new static( ...$args );
 		}
 
-		return self::$instances[ $class ];
+		return self::$instances[ static::class ];
 	}
 
 	/**
 	 * Constructor.
 	 *
 	 * @since 0.1.0
+	 *
+	 * @param mixed ...$args Optional arguments.  Declaring this here with the spread operator
+	 *                       allows sub-classes to declare specific arguments.
 	 */
-	protected function __construct() {
-		// get "Late Static Binding" class name.
-		$class = get_called_class();
-
-		if ( isset( self::$instances[ $class ] ) ) {
+	protected function __construct( ...$args ) {
+		if ( isset( self::$instances[ static::class ] ) ) {
 			return;
 		}
 
-		self::$instances[ $class ] = $this;
+		parent::__construct( ...$args );
 
-		$this->add_hooks();
-	}
-
-	/**
-	 * Add hooks.
-	 *
-	 * Sublcasses that override this method **must** call `parent::add_hooks()`.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return void
-	 */
-	protected function add_hooks() {
-		// these are methods that I know from experience I often define in classes,
-		// hence, we automatically hook them (if they exist) instead of having to
-		// do it explicitly in the add_hooks() method of each class that defines them.
-		$hooks = array(
-			'plugins_loaded'        => 'plugins_loaded',
-			'init'                  => array( 'init', 'register_scripts', 'register_styles' ),
-			'admin_init'            => 'admin_init',
-			'admin_enqueue_scripts' => array( 'admin_enqueue_scripts', 'admin_enqueue_styles' ),
-			'wp_enqueue_scripts'    => array( 'wp_enqueue_scripts', 'wp_enqueue_styles' ),
-			'cli_init'              => 'cli_init',
-		);
-		foreach ( $hooks as $hook => $methods ) {
-			foreach ( (array) $methods as $method ) {
-				if ( method_exists( $this, $method ) ) {
-					add_action( $hook, array( $this, $method ) );
-				}
-			}
-		}
-
-		return;
+		self::$instances[ static::class ] = $this;
 	}
 }
