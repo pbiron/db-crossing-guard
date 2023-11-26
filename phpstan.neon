@@ -1,0 +1,14 @@
+parameters:
+	level: 9
+	paths:
+		- plugin.php
+		- includes/
+	ignoreErrors:
+		-
+			message: '#^Constructor of class [a-zA-Z0-9\\_]+\\Base has an unused parameter \$args\.$#'
+			path: includes/class-base.php
+	reportUnmatchedIgnoredErrors: false
+	scanFiles:
+		- vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php
+		- vendor/php-stubs/wp-cli-stubs/wp-cli-commands-stubs.php
+		- vendor/php-stubs/wp-cli-stubs/wp-cli-i18n-stubs.php
