@@ -442,6 +442,10 @@ module.exports = function( grunt ) {
 					'wp plugin deactivate plugin-check --quiet',
 				].join( '&&' )
 			},
+			make_pot: {
+				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
+				command: 'wp i18n make-pot . languages/' + pkg.name + '.pot',
+			},
 		},
 	};
 
@@ -473,6 +477,7 @@ module.exports = function( grunt ) {
 			'readme', 'replace:plugin_php',
 			// make sure that autoloads for dev dependencies aren't included.'
 			'stash_composer_installed', 'autoload-release',
+			'make-pot',
 			'copy', 'zip:release', 'clean:release',
 			// rebuild autoloads with dev dependencies.'
 			'restore_composer_installed', 'autoload',
@@ -485,6 +490,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpunit_ms', [ 'shell:phpunit_ms' ] );
 	grunt.registerTask( 'phpstan', [ 'shell:phpstan' ] );
 	grunt.registerTask( 'plugin-check', [ 'shell:plugin_check' ] );
+	grunt.registerTask( 'make-pot', [ 'shell:make_pot' ] );
 
 	// this task is normally only run early in the project, when I haven't
 	// yet decided on what namespace I want to use :-)
