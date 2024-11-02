@@ -28,6 +28,8 @@ require __DIR__ . '/vendor/autoload.php';
  *
  * @since 0.1.0
  * @since 0.2.0 Plugin renamed to DB Crossing Guard, slug to db-crossing-guard and Namespace to SHC\DB_CROSSING_GUARD
+ *
+ * @package db-crossing-guard
  */
 class Plugin extends Singleton {
 	/**
