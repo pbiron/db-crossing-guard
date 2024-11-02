@@ -94,13 +94,16 @@ class Plugin extends Singleton {
 	 * Perform initialization after all plugins have loaded.
 	 *
 	 * @since 0.1.0
+	 * @since 0.2.3 Method name (and hook) changed from `plugins_loaded`.
 	 *
 	 * @return void
 	 *
-	 * @aciton plugins_loaded
+	 * @aciton after_setup_theme
 	 */
-	public function plugins_loaded() {
+	public function after_setup_theme() {
 		global $pagenow;
+
+		load_plugin_textdomain( 'db-crossing-guard', false, basename( __DIR__ ) . '/languages' );
 
 		if ( ! ( is_admin() && current_user_can( self::CAP ) ) ) {
 			return;

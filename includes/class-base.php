@@ -50,7 +50,8 @@ abstract class Base {
 		// do it explicitly in the add_hooks() method of each class that defines them.
 		$hooks = array(
 			'plugins_loaded'        => 'plugins_loaded',
-			'init'                  => array( 'init', 'register_scripts', 'register_styles' ),
+			'after_setup_theme'     => 'after_setup_theme',
+			'init'                  => array( 'init', 'register_scripts', 'register_styles', 'register_block_types' ),
 			'admin_enqueue_scripts' => array( 'admin_enqueue_scripts', 'admin_enqueue_styles' ),
 			'wp_enqueue_scripts'    => 'wp_enqueue_scripts',
 			'cli_init'              => 'cli_init',
