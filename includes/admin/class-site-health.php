@@ -197,7 +197,7 @@ class Site_Health extends Connection_Status {
 				__( 'The details of how to establish an encrypted database connection are beyond the scope of what can be described here.', 'db-crossing-guard' )
 			),
 			'badge'       => array(
-				'label' => __( 'Security' ),
+				'label' => __( 'Security', 'db-crossing-guard' ),
 				'color' => $failed_badge_color,
 			),
 			'test'        => 'db-crossing-guard',
