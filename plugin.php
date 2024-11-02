@@ -1,5 +1,4 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
-
 /**
  * Plugin Name: DB Crossing Guard
  * Description: Display various indicators to let admins know whether the DB connection is encrypted
