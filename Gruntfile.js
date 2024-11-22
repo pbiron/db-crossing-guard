@@ -232,6 +232,10 @@ module.exports = function( grunt ) {
 						to: '$1<%= pkg.requires_php %>',
 					},
 					{
+						from: /^(\s*\*\s*Tested up to:\s*)(.*)/m,
+						to: '$1<%= pkg.tested_up_to %>',
+					},
+					{
 						from: /^(\s*\*\s*Plugin URI:\s*)(.*)/m,
 						to: '$1<%= pkg.repository %>/<%= pkg.name %>',
 					},
@@ -283,7 +287,7 @@ module.exports = function( grunt ) {
 				],
 			},
 			// set the version in any block.json files.
-            version_block_json:{
+			version_block_json:{
 				src: ['includes/blocks/**/block.json'],
 				overwrite: true,
 				replacements: [
@@ -294,7 +298,7 @@ module.exports = function( grunt ) {
 				]
 			},
 			// set the version in any *asset.php files (for blocks).
-            version_block_asset:{
+			version_block_asset:{
 				src: ['includes/blocks/**/*.asset.php'],
 				overwrite: true,
 				replacements: [
@@ -314,22 +318,22 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
-            composer: {
-                src: ['composer.json'],
-                overwrite: true,
-                replacements: [
-                	// this is for "name" : "plugin-name"
-                    {
-                        from: /^(\s*"name"\s*:\s*")(.*)"/m,
-                        to: '$1shc/<%= pkg.name %>"',
-                    },
-                	// this is for "description" : "description"
-                    {
-                        from: /^(\s*"description"\s*:\s*")(.*)"/m,
-                        to: '$1<%= pkg.description %>"',
-                    },
-                ],
-            },
+			composer: {
+			    src: ['composer.json'],
+			    overwrite: true,
+			    replacements: [
+			    	// this is for "name" : "plugin-name"
+			        {
+			            from: /^(\s*"name"\s*:\s*")(.*)"/m,
+			            to: '$1shc/<%= pkg.name %>"',
+			        },
+			    	// this is for "description" : "description"
+			        {
+			            from: /^(\s*"description"\s*:\s*")(.*)"/m,
+			            to: '$1<%= pkg.description %>"',
+			        },
+			    ],
+			},
 		},
 
 		// Create README.md for GitHub.
@@ -368,7 +372,7 @@ module.exports = function( grunt ) {
 			release: {
 				expand: true,
 				src: [
-					'plugin.php', 'readme.txt', 'assets/**',
+					'plugin.php', 'readme.txt', 'assets/**', 'languages/**',
 					'includes/**', 'admin/**','utils/**',
 					'vendor/composer/**', 'vendor/autoload.php',
 
@@ -395,7 +399,7 @@ module.exports = function( grunt ) {
 				expand: true,
 				cwd: '.',
 				src: '<%= pkg.name %>/**',
-				dest: '<%= pkg.name %>.<%= pkg.version %>.zip',
+				dest: 'releases/<%= pkg.base_version %>/<%= pkg.name %>-<%= pkg.version %>.zip',
 			},
 		},
 
@@ -432,8 +436,16 @@ module.exports = function( grunt ) {
 			phpunit_ms: {
 				command: 'phpunit -c tests/phpunit/multisite.xml' + ( grunt.option( 'group' ) ? ' --group ' + grunt.option( 'group' ) : '' ),
 			},
+			make_pot: {
+				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
+				command: 'wp i18n make-pot . languages/' + pkg.name + '.pot',
+			},
+			make_json: {
+				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
+				command: 'wp i18n make-json languages --no-purge',
+			},
 			phpstan: {
-				command: 'phpstan -v analyse'
+				command: 'phpstan -v analyse',
 			},
 			plugin_check: {
 				command: [
@@ -442,9 +454,13 @@ module.exports = function( grunt ) {
 					'wp plugin deactivate plugin-check --quiet',
 				].join( '&&' )
 			},
-			make_pot: {
-				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
-				command: 'wp i18n make-pot . languages/' + pkg.name + '.pot',
+			// to build a specific block, run `grunt shell:build_block:bockname`, eg., `grunt shell:build_block:my-block` 
+			build_block: {
+				command: block => `npx wp-scripts build --webpack-src-dir=./includes/blocks/${block}/src --output-path=./includes/blocks/${block}/build`
+			},
+			// to start/watch a specific block, run `grunt shell:start_block:bockname`, eg., `grunt shell:start_block:my-block` 
+			start_block: {
+				command: block => `npx wp-scripts start --webpack-src-dir=./includes/blocks/${block}/src --output-path=./includes/blocks/${block}/build`
 			},
 		},
 	};
@@ -466,7 +482,7 @@ module.exports = function( grunt ) {
 
 	// finally, register our tasks.
 	grunt.registerTask( 'default', [ 'build' ] );
-	grunt.registerTask( 'build', [ 'clean', 'autoload', 'uglify', /*'sass', 'rtlcss',*/ 'cssmin' ] );
+	grunt.registerTask( 'build', [ 'clean', 'autoload', 'uglify', /*'sass',*/ 'rtlcss', 'cssmin'/*, 'build_blocks'*/ ] );
 
 	grunt.registerTask( 'precommit', [ 'phpstan', /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'plugin-check', 'jshint:release' ] );
 	// build and package everything up into a ZIP suitable for installing on a WP site.
@@ -477,7 +493,6 @@ module.exports = function( grunt ) {
 			'readme', 'replace:plugin_php',
 			// make sure that autoloads for dev dependencies aren't included.'
 			'stash_composer_installed', 'autoload-release',
-			'make-pot',
 			'copy', 'zip:release', 'clean:release',
 			// rebuild autoloads with dev dependencies.'
 			'restore_composer_installed', 'autoload',
@@ -491,6 +506,33 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpstan', [ 'shell:phpstan' ] );
 	grunt.registerTask( 'plugin-check', [ 'shell:plugin_check' ] );
 	grunt.registerTask( 'make-pot', [ 'shell:make_pot' ] );
+	grunt.registerTask( 'make-json', [ 'shell:make_json' ] );
+
+	grunt.registerTask( 'build_block', function( block ) {
+		if ( ! require( 'fs' ).existsSync( 'includes/blocks/' + block + '/src/block.json' ) ) {
+			grunt.log.error( '"' + block + '" can\'t be built because it has no src/block.json.' );
+
+			return false;
+		}
+
+		grunt.task.run( 'shell:build_block:' + block );
+	} );
+	grunt.registerTask( 'start_block', function( block ) {
+		if ( ! require( 'fs' ).existsSync( 'includes/blocks/' + block + '/src/block.json' ) ) {
+			grunt.log.error( block + ' can\'t be started because it has no src/block.json.' );
+
+			return false;
+		}
+
+		grunt.task.run( 'shell:start_block:' + block );
+	} );
+	grunt.registerTask( 'build_blocks', 'Build all the blocks in the includes/blocks directory', function() {
+		const blocks = require( 'fs' ).readdirSync( 'includes/blocks' );
+
+		blocks.forEach( ( block ) => {
+			grunt.task.run( 'build_block:' + block );
+		} );
+	} );
 
 	// this task is normally only run early in the project, when I haven't
 	// yet decided on what namespace I want to use :-)
