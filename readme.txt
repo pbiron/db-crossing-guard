@@ -2,10 +2,10 @@
 
 Contributors: pbiron
 Tags: database, security, privacy
-Requires at least: 4.6
-Requires PHP: 5.6.0
-Tested up to: 5.6.0
-Stable tag: 0.2.1
+Requires at least: 6.6
+Requires PHP: 8.1
+Tested up to: 6.7
+Stable tag: 0.2.3
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU
@@ -34,6 +34,15 @@ To be written.
 To be written.
 
 == Changelog ==
+
+= 0.2.3 (2024-11-22) =
+
+* Enhancements
+    * I18N: load translations on `after_setup_theme` to be compatible with WP 6.7+
+
+= 0.2.2 (?) =
+
+* Unknown
 
 = 0.2.1 (2021-02-02) =
 

@@ -1,12 +1,16 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Plugin Name: DB Crossing Guard
- * Description: Display various indicators to let admins know whether the DB connection is encrypted
- * Version: 0.2.1
- * Author: Paul V. Biron/Sparrow Hawk Computing
- * Author URI: http://sparrowhawkcomputing.com/
- * Plugin URI: https://github.com/pbiron/db-crossing-guard/
- * Network: true
+ * Plugin Name:       DB Crossing Guard
+ * Description:       Display various indicators to let admins know whether the DB connection is encrypted
+ * Version:           0.2.3
+ * Requires at least: 6.6
+ * Requires PHP:      8.1
+ * Author:            Paul V. Biron/Sparrow Hawk Computing
+ * Author URI:        http://sparrowhawkcomputing.com/
+ * Plugin URI:        https://github.com/pbiron/db-crossing-guard
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Network:           true
  *
  * Inspired by the At a Glance item added by the secure-db-connection plugin.
  */
@@ -39,7 +43,7 @@ class Plugin extends Singleton {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.2.1';
+	const VERSION = '0.2.3';
 
 	/**
 	 * The full path to the main plugin file.
