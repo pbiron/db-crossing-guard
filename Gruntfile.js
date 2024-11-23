@@ -487,10 +487,10 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'precommit', [ 'phpstan', /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'plugin-check', 'jshint:release' ] );
 	// build and package everything up into a ZIP suitable for installing on a WP site.
 	grunt.registerTask(
-		'release',
+		'package',
 		[
 			'build', 'precommit',
-			'readme', 'replace:plugin_php',
+			'readme', 'replace:plugin',
 			// make sure that autoloads for dev dependencies aren't included.'
 			'stash_composer_installed', 'autoload-release',
 			'copy', 'zip:release', 'clean:release',
