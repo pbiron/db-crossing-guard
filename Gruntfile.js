@@ -212,6 +212,14 @@ module.exports = function( grunt ) {
 						to: '$1<%= pkg.description %>',
 					},
 					{
+						from: /^(\s*\* Author:\s*)(.*)/mg,
+						to: '$1<%= pkg.author %>',
+					},
+					{
+						from: /^(\s*\* Author URI:\s*)(.*)/mg,
+						to: '$1<%= pkg.author_uri %>',
+					},
+					{
 						from: /^(\s*\* Version:\s*)(.*)/mg,
 						to: '$1<%= pkg.version %>',
 					},
