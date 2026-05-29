@@ -462,6 +462,9 @@ module.exports = function( grunt ) {
 			start_block: {
 				command: block => `npx wp-scripts start --webpack-src-dir=./includes/blocks/${block}/src --output-path=./includes/blocks/${block}/build`
 			},
+			upload_zip: {
+				command: version => `wp shc-updater upload_zip --type=plugin releases/${version}/${pkg.name}-${version}.zip`
+			},
 		},
 	};
 
@@ -508,6 +511,8 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'make-pot', [ 'shell:make_pot' ] );
 	grunt.registerTask( 'make-json', [ 'shell:make_json' ] );
 
+	grunt.registerTask( 'branched', [ 'replace:plugin', 'replace:readme' ] );
+
 	grunt.registerTask( 'build_block', function( block ) {
 		if ( ! require( 'fs' ).existsSync( 'includes/blocks/' + block + '/src/block.json' ) ) {
 			grunt.log.error( '"' + block + '" can\'t be built because it has no src/block.json.' );
@@ -532,6 +537,10 @@ module.exports = function( grunt ) {
 		blocks.forEach( ( block ) => {
 			grunt.task.run( 'build_block:' + block );
 		} );
+	} );
+
+	grunt.registerTask( 'upload_zip', function( version ) {
+		grunt.task.run( 'shell:upload_zip:' + version );
 	} );
 
 	// this task is normally only run early in the project, when I haven't
