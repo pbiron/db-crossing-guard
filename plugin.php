@@ -21,6 +21,7 @@
  */
 namespace SHC\DB_CROSSING_GUARD;
 
+use SHC\Updater\Updater;
 use WP_CLI;
 
 defined( 'ABSPATH' ) || die;
@@ -126,6 +127,8 @@ class Plugin extends Singleton {
 
 				break;
 		}
+
+		Updater::get_instance();
 
 		/**
 		 * Fires when db-crossing-guard has been loaded.

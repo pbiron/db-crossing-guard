@@ -18,6 +18,15 @@
 			"phpstan/extension-installer": true
 		}
 	},
+	"repositories": [
+		{
+			"type": "path",
+			"url": "/Users/pbiron/Documents/wp/shared-extensions/shared_composer_repos/shc/updater",
+			"options": {
+				"symlink": true
+			}
+		}
+	],
 	"minimum-stability" : "dev",
 	"autoload": {
 		"classmap": [
@@ -31,5 +40,7 @@
 		"phpstan/phpstan": "1.11.x-dev",
 		"szepeviktor/phpstan-wordpress": "dev-master",
 		"wp-coding-standards/wpcs": "^3"
+	"require": {
+		"shc/updater": "*"
 	}
 }
