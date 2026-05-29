@@ -109,7 +109,7 @@ class Plugin extends Singleton {
 	public function after_setup_theme() {
 		global $pagenow;
 
-		load_plugin_textdomain( 'db-crossing-guard', false, basename( __DIR__ ) . '/languages' );
+		load_plugin_textdomain( 'db-crossing-guard', false, basename( __DIR__ ) . '/languages' ); // //phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 
 		if ( ! ( is_admin() && current_user_can( self::CAP ) ) ) {
 			return;
