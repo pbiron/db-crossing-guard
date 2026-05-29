@@ -2,15 +2,17 @@
 /**
  * Plugin Name:       DB Crossing Guard
  * Description:       Display various indicators to let admins know whether the DB connection is encrypted
- * Version:           0.2.3
- * Requires at least: 6.6
- * Requires PHP:      8.1
+ * Version:           0.2.4
+ * Requires at least: 6.9
+ * Tested up to:      7.0
+ * Requires PHP:      8.3
  * Author:            Paul V. Biron/Sparrow Hawk Computing
- * Author URI:        http://sparrowhawkcomputing.com/
+ * Author URI:        https://profiles.wordpress.org/pbiron/
  * Plugin URI:        https://github.com/pbiron/db-crossing-guard
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Network:           true
+ * Update URI:        db-crossing-guard
  *
  * Inspired by the At a Glance item added by the secure-db-connection plugin.
  */
@@ -44,7 +46,7 @@ class Plugin extends Singleton {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.2.3';
+	const VERSION = '0.2.4';
 
 	/**
 	 * The full path to the main plugin file.

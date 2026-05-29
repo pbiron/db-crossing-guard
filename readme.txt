@@ -2,10 +2,10 @@
 
 Contributors: pbiron
 Tags: database, security, privacy
-Requires at least: 6.6
-Requires PHP: 8.1
-Tested up to: 6.7
-Stable tag: 0.2.3
+Requires at least: 6.9
+Requires PHP: 8.3
+Tested up to: 7.0
+Stable tag: 0.2.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z6D97FA595WSU
@@ -34,6 +34,12 @@ To be written.
 To be written.
 
 == Changelog ==
+
+= 0.2.4 (2025-05-29) =
+
+* Misc
+    * Update composer dependencies for compatibility with PHP 8.4
+    * Update tested up, etc plugin headers
 
 = 0.2.3 (2024-11-22) =
 
